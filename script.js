@@ -1,0 +1,158 @@
+// script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Toggle Search
+  const searchToggleBtn = document.getElementById('search-toggle');
+  const searchContainer = document.getElementById('search-container');
+  if (searchToggleBtn && searchContainer) {
+    searchToggleBtn.addEventListener('click', e => {
+      e.preventDefault();
+      searchContainer.classList.toggle('open');
+      if (searchContainer.classList.contains('open')) {
+        searchContainer.querySelector('.header__search-input')?.focus();
+      }
+    });
+    document.addEventListener('click', e => {
+      if (!searchToggleBtn.contains(e.target) && !searchContainer.contains(e.target)) {
+        searchContainer.classList.remove('open');
+      }
+    });
+  }
+
+  // 2) Smooth scroll to footer
+  const contactsLink = document.querySelector('a.header__nav-link[href="#site-footer"]');
+  contactsLink?.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('site-footer')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // 3) Dropdown menus
+  const dropdownItems = document.querySelectorAll('.header__nav-item.dropdown');
+  dropdownItems.forEach(item => {
+    const trigger = item.querySelector('.header__nav-link');
+    trigger?.addEventListener('click', e => {
+      e.preventDefault();
+      dropdownItems.forEach(el => el.classList.remove('show'));
+      item.classList.toggle('show');
+    });
+  });
+  document.addEventListener('click', () => dropdownItems.forEach(item => item.classList.remove('show')));
+
+  // 4) Section navigation
+  showSection('hero');
+
+  // 5) Product card zoom & tooltips
+  document.querySelectorAll('.product-card').forEach(card => {
+    const wrapper = card.querySelector('.image-container');
+    const img = wrapper?.querySelector('.product-image');
+    if (wrapper && img) {
+      wrapper.addEventListener('mousemove', e => {
+        const { left, top, width, height } = wrapper.getBoundingClientRect();
+        img.style.setProperty('--x', `${((e.clientX - left) / width) * 100}%`);
+        img.style.setProperty('--y', `${((e.clientY - top) / height) * 100}%`);
+      });
+      wrapper.addEventListener('mouseleave', () => {
+        img.style.setProperty('--x', '50%');
+        img.style.setProperty('--y', '50%');
+      });
+    }
+    function showTooltip(button, text) {
+      card.querySelector('.tooltip')?.remove();
+      const tip = document.createElement('div');
+      tip.className = 'tooltip';
+      tip.innerText = text;
+      card.appendChild(tip);
+      const btnRect = button.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      tip.style.cssText = `position:absolute; left:${btnRect.left - cardRect.left + btnRect.width/2}px; top:${btnRect.top - cardRect.top}px;`;
+      requestAnimationFrame(() => tip.classList.add('visible'));
+      setTimeout(() => tip.classList.remove('visible'), 1500);
+      setTimeout(() => tip.remove(), 1800);
+    }
+    card.querySelector('.btn-favorite')?.addEventListener('click', e => { e.preventDefault(); showTooltip(e.currentTarget, 'Добавлено в избранное'); });
+    card.querySelector('.btn-add')?.addEventListener('click', e => { e.preventDefault(); showTooltip(e.currentTarget, 'Добавить в корзину'); });
+  });
+
+  // 6) FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item.active').forEach(opened => opened.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+
+  // 7) Product detail: size selection and add-to-cart with shake effect
+  const productEl = document.querySelector('.main-product');
+  if (productEl) {
+    const sizeButtons = productEl.querySelectorAll('.sizes .size');
+    const addBtn = productEl.querySelector('#add-to-cart');
+    let selectedSize = null;
+
+    function clearActives() {
+      sizeButtons.forEach(b => b.classList.remove('active', 'shake'));
+    }
+
+    // 7.1) Size selection
+    sizeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        clearActives();
+        btn.classList.add('active');
+        selectedSize = btn.dataset.size;
+      });
+    });
+
+    // 7.2) Add to cart
+    if (addBtn) {
+      addBtn.addEventListener('click', e => {
+        e.preventDefault();
+        if (!selectedSize) {
+          sizeButtons.forEach(b => {
+            b.classList.add('shake');
+            setTimeout(() => b.classList.remove('shake'), 300);
+          });
+          return;
+        }
+        const nameEl = productEl.querySelector('.product-title');
+        const priceEl = productEl.querySelector('.price');
+        const imgEl = productEl.querySelector('.image-stack .stack-img.active')
+                    || productEl.querySelector('.image-stack .stack-img');
+        const name = nameEl?.innerText.trim();
+        const price = priceEl ? parseInt(priceEl.innerText.replace(/\D/g, ''), 10) : 0;
+        const image = imgEl?.src;
+        if (!name || !image) return;
+
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        cart.push({ name, price, image, size: selectedSize, quantity: 1 });
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        addBtn.innerText = 'Добавлено';
+        setTimeout(() => addBtn.innerText = 'В корзину', 1000);
+      });
+    }
+  }
+});
+
+// 8) Image stack and Buy modal
+window.addEventListener('load', () => {
+  const stack = document.querySelector('.image-stack');
+  if (stack) {
+    const firstImg = stack.querySelector('.stack-img');
+    firstImg && firstImg.classList.add('active');
+    stack.addEventListener('click', e => {
+      const img = e.target.closest('.stack-img');
+      if (!img) return;
+      stack.querySelectorAll('.stack-img.active').forEach(el => el.classList.remove('active'));
+      img.classList.add('active');
+    });
+  }
+  const modal = document.getElementById('buy-modal');
+  const buyNow = document.getElementById('buy-now');
+  const closeBtn = document.querySelector('.modal-close');
+  if (buyNow && modal) buyNow.addEventListener('click', () => modal.style.display = 'flex');
+  closeBtn?.addEventListener('click', () => modal.style.display = 'none');
+  window.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+});

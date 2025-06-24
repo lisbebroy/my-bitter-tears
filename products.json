@@ -1,0 +1,38 @@
+[
+  {
+    "id": "hawker",
+    "name": "Hawker Wing",
+    "image": "l1.png",
+    "price": 9300
+  },
+  {
+    "id": "anatomy",
+    "name": "Анатомия",
+    "image": "l2.png",
+    "price": 5990
+  },
+  {
+    "id": "butterfly",
+    "name": "Butterfly",
+    "image": "l2.png",
+    "price": 8000
+  },
+  {
+    "id": "red",
+    "name": "Красное",
+    "image": "l2.png",
+    "price": 8899
+  },
+  {
+    "id": "apex",
+    "name": "Apex Pulmonis Sinistri",
+    "image": "l2.png",
+    "price": 5750
+  },
+  {
+    "id": "green",
+    "name": "Зеленое",
+    "image": "l2.png",
+    "price": 7777
+  }
+]
