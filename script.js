@@ -139,3 +139,24 @@ window.addEventListener('load',()=>{
   closeBtn?.addEventListener('click',()=>modal.style.display='none');
   window.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });
 });
+
+/*-----------------------------------------------------------------------------модалка-*/
+const buyBtns  = document.querySelectorAll('.buy-now'); // или '#buy-now', если одна кнопка
+const modal    = document.getElementById('purchase-modal');
+const closeBtn = modal.querySelector('.modal__close');
+
+buyBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const { id, name, price } = btn.dataset;
+    modal.querySelector('#modal-product-id').value          = id;
+    modal.querySelector('#modal-product-name').textContent  = name;
+    modal.querySelector('#modal-product-price').textContent = price + ' ₽';
+    modal.querySelector('#modal-product-price-input').value = price;
+    modal.classList.add('open');
+  });
+});
+
+closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', e => {
+  if (e.target === modal) modal.classList.remove('open');
+});
