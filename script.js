@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = productEl.querySelector('.product-title')?.innerText.trim();
       const priceText = productEl.querySelector('.price')?.innerText.trim() || '';
       const price = parseInt(priceText.replace(/\D/g, ''), 10) || 0;
+      const link = window.location.href;
       const img = productEl.querySelector('.image-stack .stack-img.active')?.src || productEl.querySelector('.image-stack .stack-img')?.src;
       if (!name || !img) return;
       const cart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (itemInCart) {
         itemInCart.quantity += 1
       } else {
-        cart.push({ name, price, image: img, size: selectedSize, quantity: 1 });
+        cart.push({ name, price, image: img, size: selectedSize, quantity: 1, link });
       } 
       localStorage.setItem('cart', JSON.stringify(cart));
       addBtn.innerText = 'Добавлено'; // setTimeout(()=>addBtn.innerText='В корзину',1000);
@@ -163,8 +164,6 @@ window.addEventListener('load', () => {
   buyNow?.addEventListener('click', () => modal.style.display = 'flex');
   closeBtn?.addEventListener('click', () => modal.style.display = 'none');
   window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
-
-  console.log(localStorage.getItem('cart'))
 });
 
 /*--------------------------------------------------------------------------------------модалка----------------------------------------------------------------------------*/
