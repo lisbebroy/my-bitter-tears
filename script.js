@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.appendChild(tip);
       const btnRect = button.getBoundingClientRect();
       const cardRect = card.getBoundingClientRect();
-      tip.style.cssText = `position:absolute; left:${btnRect.left - cardRect.left + btnRect.width/2}px; top:${btnRect.top - cardRect.top}px;`;
+      tip.style.cssText = `position:absolute; left:${btnRect.left - cardRect.left + btnRect.width / 2}px; top:${btnRect.top - cardRect.top}px;`;
       requestAnimationFrame(() => tip.classList.add('visible'));
       setTimeout(() => tip.classList.remove('visible'), 1500);
       setTimeout(() => tip.remove(), 1800);
@@ -108,18 +108,23 @@ document.addEventListener('DOMContentLoaded', () => {
     addBtn?.addEventListener('click', e => {
       e.preventDefault();
       if (!selectedSize) {
-        sizeButtons.forEach(b => { b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'),300); });
+        sizeButtons.forEach(b => { b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'), 300); });
         return;
       }
       const name = productEl.querySelector('.product-title')?.innerText.trim();
-      const priceText = productEl.querySelector('.price')?.innerText.trim()||'';
-      const price = parseInt(priceText.replace(/\D/g,''),10)||0;
+      const priceText = productEl.querySelector('.price')?.innerText.trim() || '';
+      const price = parseInt(priceText.replace(/\D/g, ''), 10) || 0;
       const img = productEl.querySelector('.image-stack .stack-img.active')?.src || productEl.querySelector('.image-stack .stack-img')?.src;
-      if (!name||!img) return;
-      const cart = JSON.parse(localStorage.getItem('cart')||'[]');
-      cart.push({ name, price, image:img, size:selectedSize, quantity:1});
-      localStorage.setItem('cart',JSON.stringify(cart));
-      addBtn.innerText='Добавлено'; setTimeout(()=>addBtn.innerText='В корзину',1000);
+      if (!name || !img) return;
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const itemInCart = cart.find(item => item.name === name && item.size === selectedSize);
+      if (itemInCart) {
+        itemInCart.quantity += 1
+      } else {
+        cart.push({ name, price, image: img, size: selectedSize, quantity: 1 });
+      } 
+      localStorage.setItem('cart', JSON.stringify(cart));
+      addBtn.innerText = 'Добавлено'; // setTimeout(()=>addBtn.innerText='В корзину',1000);
     });
     
       buyBtn?.addEventListener('click', e => {
@@ -141,23 +146,25 @@ document.addEventListener('DOMContentLoaded', () => {
   } 
 });
 
-/*--------------------------------------------------------------------------------------фото свайп---------------------------------------------------------------------------*/
-window.addEventListener('load',()=>{
-  const stack=document.querySelector('.image-stack');
-  if(stack){
-    const first=stack.querySelector('.stack-img'); first&&first.classList.add('active');
-    stack.addEventListener('click',e=>{
-      const img=e.target.closest('.stack-img'); if(!img)return;
-      stack.querySelectorAll('.stack-img.active').forEach(el=>el.classList.remove('active'));
+// 8) Image stack and Buy modal
+window.addEventListener('load', () => {
+  const stack = document.querySelector('.image-stack');
+  if (stack) {
+    const first = stack.querySelector('.stack-img'); first && first.classList.add('active');
+    stack.addEventListener('click', e => {
+      const img = e.target.closest('.stack-img'); if (!img) return;
+      stack.querySelectorAll('.stack-img.active').forEach(el => el.classList.remove('active'));
       img.classList.add('active');
     });
   }
- /* const modal=document.getElementById('purchase-modal');
-  const buyNow=document.getElementById('buy-now');
-  const closeBtn=document.querySelector('.modal-close');
-  buyNow?.addEventListener('click',()=>modal.style.display='flex');
-  closeBtn?.addEventListener('click',()=>modal.style.display='none');
-  window.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });*/
+  const modal = document.getElementById('buy-modal');
+  const buyNow = document.getElementById('buy-now');
+  const closeBtn = document.querySelector('.modal-close');
+  buyNow?.addEventListener('click', () => modal.style.display = 'flex');
+  closeBtn?.addEventListener('click', () => modal.style.display = 'none');
+  window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+
+  console.log(localStorage.getItem('cart'))
 });
 
 /*--------------------------------------------------------------------------------------модалка----------------------------------------------------------------------------*/
