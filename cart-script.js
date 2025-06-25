@@ -30,8 +30,6 @@ const increment = (name, size) => {
 }
 
 const decrement = (name, size) => {
-    console.log('here')
-
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const item = cart.find(item => item.name === name && item.size === size);
     if (item.quantity > 1) {
