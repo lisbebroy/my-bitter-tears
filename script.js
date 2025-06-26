@@ -147,23 +147,23 @@ document.addEventListener('DOMContentLoaded', () => {
   } 
 });
 
-// 8) Image stack and Buy modal
-window.addEventListener('load', () => {
-  const stack = document.querySelector('.image-stack');
-  if (stack) {
-    const first = stack.querySelector('.stack-img'); first && first.classList.add('active');
-    stack.addEventListener('click', e => {
-      const img = e.target.closest('.stack-img'); if (!img) return;
-      stack.querySelectorAll('.stack-img.active').forEach(el => el.classList.remove('active'));
+/*--------------------------------------------------------------------------------------фото свайп---------------------------------------------------------------------------*/
+window.addEventListener('load',()=>{
+  const stack=document.querySelector('.image-stack');
+  if(stack){
+    const first=stack.querySelector('.stack-img'); first&&first.classList.add('active');
+    stack.addEventListener('click',e=>{
+      const img=e.target.closest('.stack-img'); if(!img)return;
+      stack.querySelectorAll('.stack-img.active').forEach(el=>el.classList.remove('active'));
       img.classList.add('active');
     });
   }
-  const modal = document.getElementById('purchase-modal');
-  const buyNow = document.getElementById('buy-now');
-  const closeBtn = document.querySelector('.modal-close');
-  buyNow?.addEventListener('click', () => {if (modal) modal.style.display = 'flex'});
-  closeBtn?.addEventListener('click', () => {if (modal) modal.style.display = 'none'});
-  window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+ /* const modal=document.getElementById('purchase-modal');
+  const buyNow=document.getElementById('buy-now');
+  const closeBtn=document.querySelector('.modal-close');
+  buyNow?.addEventListener('click',()=>modal.style.display='flex');
+  closeBtn?.addEventListener('click',()=>modal.style.display='none');
+  window.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });*/
 });
 
 /*--------------------------------------------------------------------------------------модалка----------------------------------------------------------------------------*/
