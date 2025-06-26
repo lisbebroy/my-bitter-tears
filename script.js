@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sizeButtons = productEl.querySelectorAll('.sizes .size');
   const addBtn      = productEl.querySelector('#add-to-cart');
   const buyBtn      = productEl.querySelector('#buy-now');
-  let selectedSize  = null;
+  let selectedSize  = location.href.includes("/accs/") ? "S" : null;
 
     function clearActives() {
       sizeButtons.forEach(b => b.classList.remove('active', 'shake'));
