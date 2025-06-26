@@ -196,3 +196,8 @@ modalForm?.addEventListener('submit', (event) => {
 const showPayAlert = () => {
   alert("Благодарим за интерес! К сожалению, модуль оплаты ещё не подключён, но вы можете обратиться для заказа по электронной почте lisbebrou@gmail.com")
 }
+
+const helpSendBtn = document.getElementById("help-send-btn");
+const helpInput = document.getElementById("help-input");
+
+helpSendBtn?.addEventListener("click", () => helpInput?.value?.trim().length && alert("Вопрос отправлен!"))
