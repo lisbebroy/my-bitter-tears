@@ -9,8 +9,11 @@ const recalculateFavs = () => {
             favSpace.innerHTML += `
             <div style="display: flex; flex-direction: row; align-items: start; gap: 20px; padding: 12px 0;">
             <a href="${item.link}"><img style="display: inline; width: 140px; height: 140px; color: rgb(210, 192, 255)" src="${item.image}"></a> 
-                <div><span style="font-size: 1rem; font-weight: 600; color: rgb(210, 192, 255)">${item.name}</span><br>
-                <button style="margin-top: 30px" onclick="deleteFromFavs('${item.name}')">Удалить из избранного</button></div>
+                <div><span style="font-size: 1rem; font-weight: 600; color: rgb(210, 192, 255);">${item.name}</span>
+                
+                <div>
+                    <button style="margin-top: 30px" onclick="deleteFromFavs('${item.name}')">Удалить из избранного</button>
+                </div>
                 </div>
                 `
         });
