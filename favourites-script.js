@@ -22,5 +22,10 @@ const deleteFromFavs = (name) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const clearCartBtn = document.getElementById("clearCartBtn")
+    clearCartBtn.addEventListener('click', () => {
+        localStorage.setItem("favourites", "[]");
+        recalculateFavs();
+    })
     recalculateFavs()
 })
