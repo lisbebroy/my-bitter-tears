@@ -1520,15 +1520,17 @@ body {
   background: var(--color-primary);
   color: var(--color-bg-dark);
 }
+/* трясучка */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25%, 75% { transform: translateX(-4px); }
   50% { transform: translateX(4px); }
 }
 
-.sizes .size.shake {
+.shake {
   animation: shake 0.3s ease;
 }
+
 
 .dimensions {
   font-size: 0.85rem;

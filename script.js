@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Toggle Search
+/*--------------------------------------------------------------------------------------Менюшечка----------------------------------------------------------------------------*/
   const searchToggleBtn = document.getElementById('search-toggle');
   const searchContainer = document.getElementById('search-container');
   if (searchToggleBtn && searchContainer) {
@@ -17,14 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2) Smooth scroll to footer
+/*--------------------------------------------------------------------------------------Скролл до футера----------------------------------------------------------------------------*/
   const contactsLink = document.querySelector('a.header__nav-link[href="#site-footer"]');
   contactsLink?.addEventListener('click', e => {
     e.preventDefault();
     document.getElementById('site-footer')?.scrollIntoView({ behavior: 'smooth' });
   });
 
-  // 3) Dropdown menus
+/*--------------------------------------------------------------------------------------Дропдаун меню----------------------------------------------------------------------------*/
   const dropdownItems = document.querySelectorAll('.header__nav-item.dropdown');
   dropdownItems.forEach(item => {
     const trigger = item.querySelector('.header__nav-link');
@@ -38,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdownItems.forEach(item => item.classList.remove('show'));
   });
 
-  // 4) Section navigation (if implemented)
+
   if (typeof showSection === 'function') showSection('hero');
 
-  // 5) Product card zoom & tooltips
+/*--------------------------------------------------------------------------------------Зум в карточках---------------------------------------------------------------------------*/
   document.querySelectorAll('.product-card').forEach(card => {
     const wrapper = card.querySelector('.image-container');
     const img = wrapper?.querySelector('.product-image');
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.querySelector('.btn-add')?.addEventListener('click', e => { e.preventDefault(); showTooltip(e.currentTarget, 'Добавить в корзину'); });
   });
 
-  // 6) FAQ accordion (в разделе помощь)
+  /*--------------------------------------------------------------------------------------FAQ----------------------------------------------------------------------------*/
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -85,15 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 7) Product detail: size selection and add-to-cart with shake effect
+  /*--------------------------------------------------------------------------------------Продуктовая деталка----------------------------------------------------------------------------*/
   const productEl = document.querySelector('.main-product');
   if (productEl) {
-    const sizeButtons = productEl.querySelectorAll('.sizes .size');
-    const addBtn = productEl.querySelector('#add-to-cart');
-    let selectedSize = null;
+  const sizeButtons = productEl.querySelectorAll('.sizes .size');
+  const addBtn      = productEl.querySelector('#add-to-cart');
+  const buyBtn      = productEl.querySelector('#buy-now');
+  let selectedSize  = null;
+
     function clearActives() {
-      sizeButtons.forEach(b => b.classList.remove('active','shake'));
+      sizeButtons.forEach(b => b.classList.remove('active', 'shake'));
     }
+
     sizeButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         clearActives();
@@ -118,10 +121,27 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('cart',JSON.stringify(cart));
       addBtn.innerText='Добавлено'; setTimeout(()=>addBtn.innerText='В корзину',1000);
     });
-  }
+    
+      buyBtn?.addEventListener('click', e => {
+        e.preventDefault();
+
+        // Если размер не выбран — трясём кнопки размеров
+        if (!selectedSize) {
+          sizeButtons.forEach(b => {
+            b.classList.add('shake');
+            setTimeout(() => b.classList.remove('shake'), 300);
+          });
+          return; // дальше не идём, модалка не открывается
+        }
+
+        // Иначе — открываем модалку
+        document.getElementById('purchase-modal')?.classList.add('open');
+      });
+
+  } 
 });
 
-// 8) Image stack and Buy modal
+/*--------------------------------------------------------------------------------------фото свайп---------------------------------------------------------------------------*/
 window.addEventListener('load',()=>{
   const stack=document.querySelector('.image-stack');
   if(stack){
@@ -132,16 +152,16 @@ window.addEventListener('load',()=>{
       img.classList.add('active');
     });
   }
-  const modal=document.getElementById('buy-modal');
+ /* const modal=document.getElementById('purchase-modal');
   const buyNow=document.getElementById('buy-now');
   const closeBtn=document.querySelector('.modal-close');
   buyNow?.addEventListener('click',()=>modal.style.display='flex');
   closeBtn?.addEventListener('click',()=>modal.style.display='none');
-  window.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });
+  window.addEventListener('click',e=>{ if(e.target===modal) modal.style.display='none'; });*/
 });
 
-/*-----------------------------------------------------------------------------модалка-*/
-const buyBtns  = document.querySelectorAll('.buy-now'); // или '#buy-now', если одна кнопка
+/*--------------------------------------------------------------------------------------модалка----------------------------------------------------------------------------*/
+const buyBtns  = document.querySelectorAll('.buy-now'); 
 const modal    = document.getElementById('purchase-modal');
 const closeBtn = modal.querySelector('.modal__close');
 
