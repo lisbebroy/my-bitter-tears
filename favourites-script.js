@@ -16,7 +16,7 @@ const recalculateFavs = () => {
         });
     } else {
         cartSummary.classList.add("hidden")
-        favSpace.innerHTML = "В избранном пусто... <br><br><a href='./tshirts.html'><button class='btn btn-outline'>Перейти в каталог</button></a>"
+        favSpace.innerHTML = "В избранном пусто... <br><br><a href='./tshirts.html'><button class='btn btn-outline'>Перейти в каталог</button></a><img width='400' src='assets/йй.png'>"
     }
 
 }

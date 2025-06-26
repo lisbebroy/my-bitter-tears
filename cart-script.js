@@ -24,7 +24,7 @@ const recalculateCart = () => {
         });
     } else {
         cartSummary.classList.add("hidden")
-        cartSpace.innerHTML = "В корзине пусто... <br><br><a href='./tshirts.html'><button class='btn btn-outline'>Перейти в каталог</button></a>"
+        cartSpace.innerHTML = "В корзине пусто... <br><br><a href='./tshirts.html'><button class='btn btn-outline'>Перейти в каталог</button></a><img width='400' src='assets/йй.png'>"
     }
 
 }
