@@ -1883,10 +1883,17 @@ body {
 
 
 @media (max-width: 600px) {
+  .header__inner {
+    height: 30px;
+  }
   .header__logo {
     font-size: 14px;
   }
-
+  .header__logo-img {
+    width: auto;
+    height: 30px;
+    margin-top: auto;
+  }
   .header__actions {
     margin-left: 10px;
   }
