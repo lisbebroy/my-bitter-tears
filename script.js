@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.appendChild(tip);
       const btnRect = button.getBoundingClientRect();
       const cardRect = card.getBoundingClientRect();
-      tip.style.cssText = `position:absolute; left:${btnRect.left - cardRect.left + btnRect.width/2}px; top:${btnRect.top - cardRect.top}px;`;
+      tip.style.cssText = `position:absolute; left:${btnRect.left - cardRect.left + btnRect.width / 2}px; top:${btnRect.top - cardRect.top}px;`;
       requestAnimationFrame(() => tip.classList.add('visible'));
       setTimeout(() => tip.classList.remove('visible'), 1500);
       setTimeout(() => tip.remove(), 1800);
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sizeButtons = productEl.querySelectorAll('.sizes .size');
   const addBtn      = productEl.querySelector('#add-to-cart');
   const buyBtn      = productEl.querySelector('#buy-now');
-  let selectedSize  = null;
+  let selectedSize  = location.href.includes("/accs/") ? "S" : null;
 
     function clearActives() {
       sizeButtons.forEach(b => b.classList.remove('active', 'shake'));
@@ -108,18 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
     addBtn?.addEventListener('click', e => {
       e.preventDefault();
       if (!selectedSize) {
-        sizeButtons.forEach(b => { b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'),300); });
+        sizeButtons.forEach(b => { b.classList.add('shake'); setTimeout(() => b.classList.remove('shake'), 300); });
         return;
       }
       const name = productEl.querySelector('.product-title')?.innerText.trim();
-      const priceText = productEl.querySelector('.price')?.innerText.trim()||'';
-      const price = parseInt(priceText.replace(/\D/g,''),10)||0;
+      const priceText = productEl.querySelector('.price')?.innerText.trim() || '';
+      const price = parseInt(priceText.replace(/\D/g, ''), 10) || 0;
+      const link = window.location.href;
       const img = productEl.querySelector('.image-stack .stack-img.active')?.src || productEl.querySelector('.image-stack .stack-img')?.src;
-      if (!name||!img) return;
-      const cart = JSON.parse(localStorage.getItem('cart')||'[]');
-      cart.push({ name, price, image:img, size:selectedSize, quantity:1});
-      localStorage.setItem('cart',JSON.stringify(cart));
-      addBtn.innerText='Добавлено'; setTimeout(()=>addBtn.innerText='В корзину',1000);
+      if (!name || !img) return;
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const itemInCart = cart.find(item => item.name === name && item.size === selectedSize);
+      if (itemInCart) {
+        itemInCart.quantity += 1
+      } else {
+        cart.push({ name, price, image: img, size: selectedSize, quantity: 1, link });
+      } 
+      localStorage.setItem('cart', JSON.stringify(cart));
+      addBtn.innerText = 'Добавлено'; // setTimeout(()=>addBtn.innerText='В корзину',1000);
     });
     
       buyBtn?.addEventListener('click', e => {
@@ -163,7 +169,7 @@ window.addEventListener('load',()=>{
 /*--------------------------------------------------------------------------------------модалка----------------------------------------------------------------------------*/
 const buyBtns  = document.querySelectorAll('.buy-now'); 
 const modal    = document.getElementById('purchase-modal');
-const closeBtn = modal.querySelector('.modal__close');
+const closeBtn = modal?.querySelector('.modal__close');
 
 buyBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -176,7 +182,22 @@ buyBtns.forEach(btn => {
   });
 });
 
-closeBtn.addEventListener('click', () => modal.classList.remove('open'));
-modal.addEventListener('click', e => {
+closeBtn?.addEventListener('click', () => modal.classList.remove('open'));
+modal?.addEventListener('click', e => {
   if (e.target === modal) modal.classList.remove('open');
 });
+
+const modalForm = modal?.querySelector("form.modal__form");
+modalForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  showPayAlert();
+})
+
+const showPayAlert = () => {
+  alert("Благодарим за интерес! К сожалению, модуль оплаты ещё не подключён, но вы можете обратиться для заказа по электронной почте lisbebrou@gmail.com")
+}
+
+const helpSendBtn = document.getElementById("help-send-btn");
+const helpInput = document.getElementById("help-input");
+
+helpSendBtn?.addEventListener("click", () => helpInput?.value?.trim().length && alert("Вопрос отправлен!"))

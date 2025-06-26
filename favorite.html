@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VELVET ‒ Корзина</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="body-cart">
+  <header class="header">
+    <div class="header__inner">
+    <a href="index.html" class="header__logo">
+      <svg xmlns="http://www.w3.org/2000/svg" class="header__logo-img" width="175" height="66" viewBox="0 0 175 66" fill="none">
+      <path d="M175 66C173.333 64.1667 169.9 60.3 169.5 59.5C169 58.5 169.5 55 168.5 54C167.5 53 158 42 156.5 41.5C155 41 148.5 42.5 146.5 41.5C144.5 40.5 134 32.5 132 31C130 29.5 118.5 21.5 118 20.5C117.5 19.5 116 19 113 19.5C110 20 108 21 107.5 19.5C107 18 87 0.999993 85 0.499993C83 -7.27177e-06 83 1.99999 82 2.49999C81 2.99999 72.5 14.5 66.5 14.5C60.5 14.5 59 16.5 58 17.5C57 18.5 48 28 45.5 29C43 30 37 31 35 30.5C33 30 26.5 21.5 26 21.5C25.5 21.5 23 21.5 23 20.5C23 19.5 18 26.5 16 26C14 25.5 12.5 27.5 11.5 26C10.5 24.5 0 32.5 0 38V66H175Z" fill="var(--logo1)"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M82.6362 4.77772C82.8263 4.75021 82.9838 4.8072 83.107 4.94862C83.9057 5.86011 84.7053 6.77151 85.5039 7.683C86.7289 9.2139 87.3992 10.9656 87.5156 12.9381C87.4814 14.1112 86.996 15.0513 86.0604 15.7579C85.6752 15.9647 85.3045 16.192 84.9475 16.4415C82.1637 17.6882 79.4244 19.0272 76.7296 20.4577C74.1735 22.0034 71.691 23.656 69.2821 25.4137C68.4269 26.1528 67.6993 26.9937 67.0992 27.9345C66.4247 29.7742 65.8819 31.6541 65.4727 33.5741C64.9001 35.6565 63.9867 37.5654 62.7334 39.2992C62.4912 39.541 62.2481 39.7837 62.0058 40.0255C60.619 40.7313 59.335 41.5858 58.1537 42.589C55.4108 44.8996 52.6429 47.1785 49.8501 49.4249C49.5648 49.624 49.2794 49.824 48.9941 50.0231C48.6772 50.1419 48.506 50.0427 48.4805 49.724C49.6173 47.3408 50.8014 44.9765 52.033 42.6317C52.807 40.88 53.4633 39.0856 54.0019 37.2484C54.4437 35.442 54.9287 33.6476 55.4571 31.8651C56.323 29.7238 57.6212 27.8866 59.3521 26.3537C61.1053 24.7797 62.8464 23.1843 64.5739 21.5685C67.6556 19.005 70.7374 16.4415 73.8191 13.8781C76.0542 11.6463 78.3946 9.53853 80.8386 7.55482C81.5568 6.70383 82.156 5.77816 82.6362 4.77772Z" fill="var(--logo3)"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M115.433 21.7722C115.519 21.7645 115.59 21.7936 115.647 21.8577C116.252 23.2573 117.125 24.4673 118.267 25.4893C119.894 26.8394 121.611 28.0647 123.42 29.1636C124.106 29.6455 124.635 30.2582 125.009 31.0007C125.134 31.5929 125.02 32.1338 124.666 32.6243C123.996 33.4899 123.237 34.2734 122.39 34.9741C120.496 36.4883 118.578 37.9691 116.635 39.4175C114.609 41.0914 112.634 42.8286 110.709 44.6299C106.701 48.646 102.722 52.6912 98.7708 56.7637C97.6466 57.7686 96.4725 58.7085 95.2495 59.5835C95.0493 59.6407 94.8484 59.6407 94.6483 59.5835C94.4825 59.3049 94.4396 59.0059 94.5194 58.6863C96.4905 54.3805 97.5787 49.8517 97.7831 45.0998C98.0872 43.5703 98.8455 42.3031 100.059 41.2974C102.345 39.5072 104.608 37.6837 106.844 35.8286C109 33.941 110.932 31.8766 112.641 29.6335C113.218 28.7705 113.705 27.8596 114.102 26.8992C114.414 25.6593 114.672 24.4058 114.874 23.1394C115.086 22.6899 115.272 22.2345 115.433 21.7722Z" fill="var(--logo3)"/>
+      </svg>
+    
+    </a>
+    <a href="index.html" class="header__logo">
+      VELVET
+    </a>
+    <nav class="header__nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item dropdown">
+          <a href="#" class="header__nav-link">Каталог</a>
+          <ul class="dropdown-menu">
+            <li><a href="tshirts.html" class="dropdown-link">Футболки</a></li>
+            <li><a href="longsleeves.html" class="dropdown-link">Лонгсливы</a></li>
+            <li><a href="accessories.html" class="dropdown-link">Аксессуары</a></li>
+          </ul>
+        </li>
+        <li class="header__nav-item dropdown">
+          <a href="#" class="header__nav-link">Покупателям</a>
+          <ul class="dropdown-menu">
+            <li><a href="about.html" class="dropdown-link">О нас</a></li>
+            <li><a href="delivery.html" class="dropdown-link">Доставка &amp; оплата</a></li>
+            <li><a href="help.html" class="dropdown-link">Помощь</a></li>
+          </ul>
+        </li>
+        <li class="header__nav-item">
+          <a href="#site-footer" class="header__nav-link">Контакты</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <button id="search-toggle" class="header__icon-button" aria-label="Поиск">
+        <svg class="search-icon-default" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path d="M34 34L25.4667 25.4667M25.4667 25.4667C27.9556 22.9778 29.3778 18.64 29.3778 14.0889C29.3778 8.04444 23.3333 2 15.1556 2C6.97778 2 2.00001 9.09221 2 15.5111C1.99999 21.9111 6.25956 29.0222 15.1556 29.0222C21.2 29.0222 22.9778 27.2444 25.4667 25.4667Z" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <svg class="search-icon-hover" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <path d="M29.3778 14.0889C29.3778 18.64 27.9556 22.9778 25.4667 25.4667C22.9778 27.2444 21.2 29.0222 15.1556 29.0222C6.25956 29.0222 1.99999 21.9111 2 15.5111C2.00001 9.09221 6.97778 2 15.1556 2C23.3333 2 29.3778 8.04444 29.3778 14.0889Z" fill="#D2C0FF"/>
+        <path d="M34 34L25.4667 25.4667M25.4667 25.4667C27.9556 22.9778 29.3778 18.64 29.3778 14.0889C29.3778 8.04444 23.3333 2 15.1556 2C6.97778 2 2.00001 9.09221 2 15.5111C1.99999 21.9111 6.25956 29.0222 15.1556 29.0222C21.2 29.0222 22.9778 27.2444 25.4667 25.4667Z" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        </button>
+      <button id="favorite-btn" class="header__icon-button" aria-label="Избранное" onclick="location.href='favorite.html';">
+        <svg class="favorite-icon-default" xmlns="http://www.w3.org/2000/svg" width="41" height="36" viewBox="0 0 41 36" fill="none">
+        <path d="M31.97 23.6889L20.5 34C17.2933 31.6296 11.324 26.2489 8.66 23.6889C5.33 20.4889 2 15.1556 2 11.2444C2 7.33333 4.59 2 10.88 2C15.912 2 19.39 6.5037 20.5 8.75556C21.61 6.62222 24.94 2 29.38 2C33.82 2 39 5.2 39 11.2444C39 16.08 34.3133 21.5556 31.97 23.6889Z" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <svg class="favorite-icon-hover" xmlns="http://www.w3.org/2000/svg" width="41" height="36" viewBox="0 0 41 36" fill="none">
+        <path d="M31.97 23.6889L20.5 34C17.2933 31.6296 11.324 26.2489 8.66 23.6889C5.33 20.4889 2 15.1556 2 11.2444C2 7.33333 4.59 2 10.88 2C15.912 2 19.39 6.5037 20.5 8.75556C21.61 6.62222 24.94 2 29.38 2C33.82 2 39 5.2 39 11.2444C39 16.08 34.3133 21.5556 31.97 23.6889Z" fill="#D2C0FF" stroke="currentColor" stroke-width="3"/>
+        </svg>
+      </button>
+      <button id="cart-btn" class="header__icon-button" aria-label="Корзина" onclick="location.href='cart.html';">
+        <svg class="cart-icon-default" xmlns="http://www.w3.org/2000/svg" width="33" height="36" viewBox="0 0 33 36" fill="none">
+        <path d="M25.2716 10.8769H31V34H2L3.07407 10.8769H8.80247M25.2716 10.8769C25.1523 8.02606 23.4099 2.26111 17.3951 2.0077C11.3802 1.7543 9.16049 7.81489 8.80247 10.8769M25.2716 10.8769H8.80247" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <svg class="cart-icon-hover" xmlns="http://www.w3.org/2000/svg" width="33" height="36" viewBox="0 0 33 36" fill="none">
+        <path d="M31 10.8769V34H2L3.07407 10.8769H8.80247C9.16049 7.81489 11.3802 1.7543 17.3951 2.0077C23.4099 2.26111 25.1523 8.02606 25.2716 10.8769H31Z" fill="#D2C0FF"/>
+        <path d="M25.2716 10.8769H31V34H2L3.07407 10.8769H8.80247M25.2716 10.8769C25.1523 8.02606 23.4099 2.26111 17.3951 2.0077C11.3802 1.7543 9.16049 7.81489 8.80247 10.8769M25.2716 10.8769H8.80247" stroke="currentColor" stroke-width="3"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id="search-container" class="header__search-container">
+    <input type="text" class="header__search-input" placeholder="Введите запрос..." aria-label="Поиск" />
+  </div>
+</header>
+
+ <main class="page-cart">
+  <div class="breadcrumbs-cart">
+        <a href="index.html">Главная</a> /
+        <span>Избранное</span>
+      </div>
+    <div id="productInfo"></div>
+
+    <div class="cart-summary" id="cart-summary">
+      <button id="clearCartBtn">Очистить избранное</button>
+    </div>
+  </main>
+ 
+
+  <footer id="site-footer" class="footer">
+    <div class="footer__container">
+      <div class="footer__row">
+        <div class="footer__col">
+          <h4 class="footer__title">VELVET</h4>
+          <p class="footer__text">© 2025 Все права защищены</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Соцсети</h4>
+          <ul class="footer__social-list">
+            <li><a href="#" class="footer__social-link">Instagram</a></li>
+            <li><a href="#" class="footer__social-link">VK</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__title">Контакты</h4>
+          <div class="footer__contact-item">
+            <svg class="footer__contact-icon" viewBox="0 0 24 24">
+              <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 11 4 6.01V6h16zM4 18V8.99l8 5 8-5V18H4z" fill="currentColor"/>
+            </svg>
+            <a href="mailto:info@velvet.com" class="footer__contact-link">info@velvet.com</a>
+          </div>
+          <div class="footer__contact-item">
+            <svg class="footer__contact-icon" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.21.49 2.53.76 3.88.76a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.35.27 2.67.76 3.88a1 1 0 01-.27 1.11l-2.2 2.2z" fill="currentColor"/>
+            </svg>
+            <a href="tel:+79991234567" class="footer__contact-link">+7 (999) 123-45-67</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="favourites-script.js"></script>
+
+</body>
+</html>
