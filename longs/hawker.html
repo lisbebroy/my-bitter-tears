@@ -177,10 +177,6 @@
     <button type="button" class="modal__close">&times;</button>
     <h2 class="modal__title">Быстрая покупка</h2>
 
-    <div class="modal__product-info">
-      <p>Товар: <strong id="modal-product-name"></strong></p>
-      <p>Цена: <strong id="modal-product-price"></strong></p>
-    </div>
 
     <form class="modal__form" action="/quick-buy" method="POST">
       <input type="hidden" name="product_id" id="modal-product-id">
@@ -188,11 +184,11 @@
 
       <div class="form-group">
         <label for="fullname">ФИО</label>
-        <input id="fullname" name="fullname" type="text" placeholder="Иванов Иван Иванович" required>
+        <input id="fullname" name="fullname" type="text" placeholder="Попов Арсений Сергеевич" required>
       </div>
       <div class="form-group">
         <label for="email">E-mail</label>
-        <input id="email" name="email" type="email" placeholder="Ivanov@gmail.com" required>
+        <input id="email" name="email" type="email" placeholder="Arseniyspopov@gmail.com" required>
       </div>
       <div class="form-group">
         <label for="phone">Телефон</label>
