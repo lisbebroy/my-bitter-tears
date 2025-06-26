@@ -951,6 +951,7 @@ body {
 }
 
 .product-card {
+  position: relative;
   display: inline-flex;        
   flex-direction: column;
   justify-content: center;     
