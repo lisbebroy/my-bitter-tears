@@ -186,3 +186,13 @@ closeBtn?.addEventListener('click', () => modal.classList.remove('open'));
 modal?.addEventListener('click', e => {
   if (e.target === modal) modal.classList.remove('open');
 });
+
+const modalForm = modal?.querySelector("form.modal__form");
+modalForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  showPayAlert();
+})
+
+const showPayAlert = () => {
+  alert("Благодарим за интерес! К сожалению, модуль оплаты ещё не подключён, но вы можете обратиться для заказа по электронной почте lisbebrou@gmail.com")
+}
