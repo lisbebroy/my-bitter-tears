@@ -158,18 +158,18 @@ window.addEventListener('load', () => {
       img.classList.add('active');
     });
   }
-  const modal = document.getElementById('buy-modal');
+  const modal = document.getElementById('purchase-modal');
   const buyNow = document.getElementById('buy-now');
   const closeBtn = document.querySelector('.modal-close');
-  buyNow?.addEventListener('click', () => modal.style.display = 'flex');
-  closeBtn?.addEventListener('click', () => modal.style.display = 'none');
+  buyNow?.addEventListener('click', () => {if (modal) modal.style.display = 'flex'});
+  closeBtn?.addEventListener('click', () => {if (modal) modal.style.display = 'none'});
   window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
 });
 
 /*--------------------------------------------------------------------------------------модалка----------------------------------------------------------------------------*/
 const buyBtns  = document.querySelectorAll('.buy-now'); 
 const modal    = document.getElementById('purchase-modal');
-const closeBtn = modal.querySelector('.modal__close');
+const closeBtn = modal?.querySelector('.modal__close');
 
 buyBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -182,7 +182,7 @@ buyBtns.forEach(btn => {
   });
 });
 
-closeBtn.addEventListener('click', () => modal.classList.remove('open'));
-modal.addEventListener('click', e => {
+closeBtn?.addEventListener('click', () => modal.classList.remove('open'));
+modal?.addEventListener('click', e => {
   if (e.target === modal) modal.classList.remove('open');
 });
