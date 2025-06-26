@@ -1211,6 +1211,7 @@ body {
 .faq-list {
   list-style: none;
   margin-bottom: 32px;
+  height: 370px;
 }
 .faq-item {
   border-bottom: 1px solid var(--color-primary);
