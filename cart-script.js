@@ -1,13 +1,16 @@
 const recalculateCart = () => {
     const cartSpace = document.getElementById("productInfo");
+    const cartSummary = document.getElementById("cart-summary");
     const totalLabel = document.getElementById("totalAmount");
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const total = cart.reduce((acc, current) => Number(current.price) * Number(current.quantity) + acc, 0)
     totalLabel.innerHTML = total + ' ₽';
     cartSpace.innerHTML = '';
-    cart.forEach(item => {
-        cartSpace.innerHTML += `
+    if (cart.length) {
+        cartSummary.classList.remove("hidden");
+        cart.forEach(item => {
+            cartSpace.innerHTML += `
             <div style="display: flex; flex-direction: row; align-items: center; gap: 12px;">
             <a href="${item.link}"><img style="display: inline; width: 140px; height: 140px;" src="${item.image}"></a> 
                 <span>${item.name} ${item.size}</span>
@@ -18,7 +21,11 @@ const recalculateCart = () => {
                 </span>
                 </div>
                 `
-    });
+        });
+    } else {
+        cartSummary.classList.add("hidden")
+        cartSpace.innerHTML = "В корзине пусто... <br><br><a href='./tshirts.html'><button class='btn btn-outline'>Перейти в каталог</button></a>"
+    }
 
 }
 

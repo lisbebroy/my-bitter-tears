@@ -1417,6 +1417,11 @@ body {
   align-items: center;
   gap: 30px;
 }
+
+.cart-summary.hidden {
+  display: none;
+}
+
 .cart-summary p {
   margin: 0;
   font-size: 1.2em;
