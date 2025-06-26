@@ -972,7 +972,7 @@ body {
   top: 0;
   left: 50%;
   transform: translate(-50%, -100%) translateY(-8px);
-  background: rgba(210, 192, 255, 0.8);
+  background: rgba(0, 0, 0, 0.4);
   color: #fff;
   padding: 12px 16px;
   border-radius: 8px;

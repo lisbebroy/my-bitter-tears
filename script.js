@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => tip.classList.remove('visible'), 1500);
       setTimeout(() => tip.remove(), 1800);
     }
-    card.querySelector('.btn-favorite')?.addEventListener('click', e => { e.preventDefault(); showTooltip(e.currentTarget, 'Добавлено в избранное'); });
-    card.querySelector('.btn-add')?.addEventListener('click', e => { e.preventDefault(); showTooltip(e.currentTarget, 'Добавить в корзину'); });
+    card.querySelector('.btn-favorite')?.addEventListener('click', e => { e.preventDefault(); showTooltip(e.currentTarget, 'Добавлено'); });
+    card.querySelector('.btn-add')?.addEventListener('click', e => { e.preventDefault(); showTooltip(e.currentTarget, 'Добавлено'); });
   });
 
   /*--------------------------------------------------------------------------------------FAQ----------------------------------------------------------------------------*/
