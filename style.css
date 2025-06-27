@@ -1879,23 +1879,43 @@ body {
 }
 
 @media (max-width: 600px) {
-  
+  .main-content {
+    width: 375px;
+    min-height: 200px;
+    height: auto;
+  }
+  .header {
+  height: 50px;
+}
+  .header__inner {
+    height: 50px;
+  }
+
   .header__logo {
     font-size: 14px;
   }
   .header__logo-img {
     width: auto;
     height: 30px;
-    margin-top: auto;
+    margin-bottom: auto;
   }
   .header__actions {
     margin-left: 10px;
   }
 
   .hero__title {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
-
+  .hero__deco-stripes {
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: auto;
+}
+  .hero__text {
+  padding-left: 22%;
+  width: 375px;
+}
   .promo-svg-top-right {
     right: 0;
     left: 0;
@@ -1904,7 +1924,22 @@ body {
   .promo-cards {
     flex-direction: column;
   }
-
+  
+.promo-text-top-left {
+  height: 100px;
+  top: 50px;
+}
+.promo-svg-top-right {
+  top: 0px;
+}
+.promo__deco-stripes-round {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  z-index: 0;
+  right: 20px;
+  top: 450px;
+}
   #productInfo {
     display: flex;
     flex-direction: column;
@@ -1944,7 +1979,19 @@ body {
   .product-details {
     padding: 10px;
   }
+  
+  
+.product-card {
+  height: 300px;
+}
 
+.product-name {
+  font-size: 15px;
+}
+
+.product-price {
+  font-size: 12px;
+}
   .full-width-block {
     flex-direction: column-reverse;
   }
@@ -2043,8 +2090,8 @@ body {
   label.burger-icon {
     display: block;
     position: fixed;
-    top: 23px;
-    right: 15px;
+    top: 15px;
+    right: 10px;
     z-index: 1001;
     width: 30px;
     height: 30px;
