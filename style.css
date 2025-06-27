@@ -1878,11 +1878,6 @@ body {
   opacity: .85;
 }
 
-.mobile-catalog {
-  display: none;
-}
-
-
 @media (max-width: 600px) {
   .header__inner {
     height: 30px;
@@ -1961,7 +1956,8 @@ body {
     padding: 0px 10px 0px 40px;
   }
 
-  .breadcrumbs-about, .breadcrumbs-help {
+  .breadcrumbs-about,
+  .breadcrumbs-help {
     padding: 10px;
   }
 
@@ -1972,10 +1968,6 @@ body {
 
   .stack-img {
     width: 100px;
-  }
-
-  .catalog-link {
-    display: none;
   }
 
   .mobile-catalog {
@@ -2003,5 +1995,66 @@ body {
   .contact-form {
     flex-direction: column;
     align-items: start;
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(210, 192, 255, 0.7);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.menu .dropdown-link {
+  color: black;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.menu li {
+  font-size: 2em;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Скрытие меню по умолчанию */
+#toggleMenu~.menu {
+  transform: translateX(-100%);
+}
+
+/* Отображение меню при нажатии чекбокса */
+#toggleMenu:checked~.menu {
+  transform: translateX(0);
+}
+
+@media screen and (max-width: 600px) {
+  label.burger-icon {
+    display: block;
+    position: fixed;
+    top: 23px;
+    right: 15px;
+    z-index: 1001;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  label.burger-icon span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--header-icon);
+    margin-bottom: 5px;
+    border-radius: 5px;
   }
 }
