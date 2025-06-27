@@ -1256,6 +1256,7 @@ body {
 }
 
 .faq-question {
+  text-align: left;
   width: 100%;
   background: none;
   border: none;
@@ -1917,12 +1918,12 @@ body {
     gap: 20px;
   }
 
-  #productInfo > div {
-    flex-direction: column!important;
+  #productInfo>div {
+    flex-direction: column !important;
   }
 
-   #productInfo > div > button {
-    margin-left: 0px!important;
+  #productInfo>div>button {
+    margin-left: 0px !important;
   }
 
   #productInfo .btn {
@@ -1954,12 +1955,13 @@ body {
   .full-width-block {
     flex-direction: column-reverse;
   }
+
   .main-product.container {
     flex-direction: column-reverse;
     padding: 0px 10px 0px 40px;
   }
 
-  .breadcrumbs-about {
+  .breadcrumbs-about, .breadcrumbs-help {
     padding: 10px;
   }
 
@@ -1982,5 +1984,24 @@ body {
     flex-direction: column;
     gap: 40px;
     z-index: 3;
+  }
+
+  .about-section {
+    padding: 0 1rem;
+  }
+
+  .container-del,
+  .container-help {
+    padding-left: 20px;
+    padding-right: 10px;
+  }
+
+  .delivery-columns {
+    gap: 0
+  }
+
+  .contact-form {
+    flex-direction: column;
+    align-items: start;
   }
 }
